@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>信号</title>
+    <style>
+      .signal {
+        height: 100px;
+        width: 100px;
+        border: solid 1px black;
+        border-radius: 50%;
+        margin: 20px;
+      }
+      .blue {
+        background-color: blue;
+      }
+      .yellow {
+        background-color: yellow;
+      }
+      .red {
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="signal blue"></div>
+    <div class="signal yellow"></div>
+    <div class="signal red"></div>
+    <script>
+      function signalChange() {
+        var blueSignal = document.querySelector('.blue');
+        var yellowSignal = document.querySelector('.yellow');
+        var redSignal = document.querySelector('.red');
+
+        /* 黄信号 */
+        setTimeout(function() {
+          blueSignal.style.backgroundColor = 'black';
+          yellowSignal.style.backgroundColor = 'yellow';
+          redSignal.style.backgroundColor = 'black';
+
+          /* 赤信号 */
+          setTimeout(function() {
+            blueSignal.style.backgroundColor = 'black';
+            yellowSignal.style.backgroundColor = 'black';
+            redSignal.style.backgroundColor = 'red';
+
+            /* 青信号 */
+            setTimeout(function() {
+              blueSignal.style.backgroundColor = 'blue';
+              yellowSignal.style.backgroundColor = 'black';
+              redSignal.style.backgroundColor = 'black';
+              signalChange();
+            }, 5000);
+          }, 7000);
+        }, 6000);
+      }
+
+      signalChange();
+    </script>
+  </body>
+</html>
